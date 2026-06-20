@@ -19,7 +19,7 @@ variable "environment" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t3.micro" # Free-tier eligible; upgrade to t3.small if needed
+  default     = "t3.small"
 }
 
 variable "ami_id" {

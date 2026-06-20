@@ -87,6 +87,13 @@ resource "aws_instance" "app" {
     apt-get update -y
     apt-get upgrade -y
 
+    # Add swap (helps with npm builds)
+    fallocate -l 1G /swapfile
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    echo '/swapfile none swap sw 0 0' >> /etc/fstab
+
     # Install Node.js 20
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
     apt-get install -y nodejs
