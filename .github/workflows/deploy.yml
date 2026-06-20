@@ -41,6 +41,6 @@ jobs:
             if pm2 list | grep -q "jm-cv"; then
               pm2 restart jm-cv
             else
-              pm2 start node --name "jm-cv" -- .next/standalone/server.js
+              pm2 start npm --name "jm-cv" -- start
               pm2 save
             fi
