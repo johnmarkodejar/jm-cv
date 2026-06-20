@@ -33,13 +33,14 @@ const s = StyleSheet.create({
     fontFamily: "Helvetica-Bold",
     color: dark,
     letterSpacing: 0.3,
-    marginBottom: 3,
+    marginBottom: 8,
   },
   titleText: {
     fontSize: 10,
     color: blue,
     fontFamily: "Helvetica-Bold",
-    marginBottom: 8,
+    marginTop: 4,
+    marginBottom: 4,
     letterSpacing: 0.2,
   },
   contactRow: {

@@ -1,0 +1,7 @@
+services:
+  cv:
+    build: .
+    ports:
+      - "3100:3000"
+    environment:
+      - NODE_ENV=production

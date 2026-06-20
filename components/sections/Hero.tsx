@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Mail, ArrowDown } from "lucide-react";
+import { MapPin, ArrowDown } from "lucide-react";
 import { personal, techStack } from "@/data/portfolio";
 
 export default function Hero() {
@@ -38,7 +38,7 @@ export default function Hero() {
           className="text-4xl sm:text-5xl font-heading font-bold text-white leading-tight tracking-tight mb-6"
         >
           Hey, I&apos;m JM —{" "}
-          <span className="text-muted-foreground font-normal">
+          <span className="text-white/55 font-normal">
             I build scalable software, automate businesses, and architect cloud systems.
           </span>
         </motion.h1>
@@ -62,26 +62,22 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-wrap items-center gap-3 mb-12"
         >
-          <a
-            href="#contact"
-            className="px-5 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-white/90 transition-colors"
-          >
-            Get in touch
-          </a>
-          <a
+<a
             href="/api/resume"
             download
             className="px-5 py-2 border border-border text-sm text-muted-foreground hover:text-white hover:border-white/20 rounded-lg transition-all"
           >
             Download resume
           </a>
-          <a
-            href={`mailto:${personal.email}`}
-            className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-white transition-colors"
-          >
-            <Mail className="w-3.5 h-3.5" />
-            {personal.email}
-          </a>
+          <span className="text-sm text-muted-foreground">
+            You can reach me via{" "}
+            <a
+              href={`mailto:${personal.email}`}
+              className="text-primary font-medium underline underline-offset-2 decoration-primary/40 hover:decoration-primary transition-colors"
+            >
+              {personal.email}
+            </a>
+          </span>
         </motion.div>
 
         {/* Tech stack row */}

@@ -1,7 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Code2, GitBranch, Repeat2, Cloud, Bot, Users, TrendingUp, Lightbulb, type LucideIcon } from "lucide-react";
 import { services } from "@/data/portfolio";
+
+const iconMap: Record<string, LucideIcon> = {
+  Code2, GitBranch, Repeat2, Cloud, Bot, Users, TrendingUp, Lightbulb,
+};
+
+function ServiceIcon({ name }: { name: string }) {
+  const Icon = iconMap[name];
+  if (!Icon) return null;
+  return <Icon className="w-4 h-4 text-primary shrink-0 mt-0.5" />;
+}
 
 export default function Services() {
   return (
@@ -35,9 +46,12 @@ export default function Services() {
               transition={{ duration: 0.4, delay: i * 0.04 }}
               className="bg-card p-6 hover:bg-secondary/40 transition-colors group"
             >
-              <h3 className="text-sm font-semibold text-white mb-2 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
+              <div className="flex items-start gap-3 mb-2">
+                <ServiceIcon name={service.icon} />
+                <h3 className="text-sm font-semibold text-white group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+              </div>
               <p className="text-xs text-muted-foreground leading-relaxed mb-4">
                 {service.description}
               </p>

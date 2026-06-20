@@ -62,7 +62,7 @@ export default function AIAutomation() {
               {workflow.map((step, i) => (
                 <div key={step.label} className="flex flex-col items-start">
                   <div className="flex items-start gap-3 py-2">
-                    <span className="text-muted-foreground/30 font-mono text-xs w-4 mt-0.5 shrink-0">{i + 1}</span>
+                    <span className="text-muted-foreground/60 font-mono text-xs w-4 mt-0.5 shrink-0">{i + 1}</span>
                     <div>
                       <p className="text-sm text-white">{step.label}</p>
                       <p className="text-xs text-muted-foreground">{step.desc}</p>

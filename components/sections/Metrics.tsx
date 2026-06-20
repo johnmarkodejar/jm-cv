@@ -5,14 +5,15 @@ import { useInView } from "framer-motion";
 import { metrics } from "@/data/portfolio";
 
 function AnimatedCounter({ value, suffix }: { value: string; suffix?: string }) {
-  const [display, setDisplay] = useState("0");
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
+  const numeric = !isNaN(parseFloat(value)) && isFinite(Number(value));
   const isDecimal = value.includes(".");
   const target = parseFloat(value);
+  const [display, setDisplay] = useState(numeric ? "0" : value);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!numeric || !inView) return;
     const duration = 1600;
     const start = performance.now();
     const step = (now: number) => {
@@ -22,10 +23,10 @@ function AnimatedCounter({ value, suffix }: { value: string; suffix?: string }) 
       if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
-  }, [inView, target, isDecimal]);
+  }, [inView, numeric, target, isDecimal]);
 
   return (
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} className={numeric ? "tabular-nums" : ""}>
       {display}{suffix}
     </span>
   );

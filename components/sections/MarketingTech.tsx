@@ -52,7 +52,7 @@ export default function MarketingTech() {
               {funnelSteps.map((step, i) => (
                 <div key={step} className="flex flex-col items-start">
                   <div className="flex items-center gap-3 py-2">
-                    <span className="text-muted-foreground/30 font-mono text-xs w-4">{i + 1}</span>
+                    <span className="text-muted-foreground/60 font-mono text-xs w-4">{i + 1}</span>
                     <span className="text-sm text-foreground">{step}</span>
                   </div>
                   {i < funnelSteps.length - 1 && (

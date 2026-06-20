@@ -4,17 +4,17 @@ export const personal = {
   name: "John Mark O. Reyes",
   preferredName: "JM Reyes",
   title: "Senior Full-Stack Engineer | Solutions Architect | DevOps Engineer | AI Automation Consultant",
-  location: "Pasig City, Philippines",
+  location: "Philippines",
   email: "johnmarkodejar@gmail.com",
   since: 2007,
 };
 
 export const metrics: Metric[] = [
   { value: "15", label: "Years Experience", suffix: "+" },
-  { value: "100", label: "Projects Delivered", suffix: "+" },
-  { value: "20", label: "Technologies", suffix: "+" },
-  { value: "50", label: "Integrations", suffix: "+" },
-  { value: "99.9", label: "Reliability", suffix: "%" },
+  { value: "End-to-End", label: "Delivery Model" },
+  { value: "Cloud Native", label: "Architecture" },
+  { value: "AI-Powered", label: "Automation Stack" },
+  { value: "Global", label: "Client Reach" },
 ];
 
 export const techStack = [
@@ -176,9 +176,21 @@ export const services: Service[] = [
 
 export const experiences: Experience[] = [
   {
+    title: "Sr. Web Developer",
+    company: "Satellite Office",
+    period: "Oct 2022 – Present",
+    description: "Senior developer embedded in an enterprise product team, modernizing legacy systems and building AI-powered solutions for telecommunications clients.",
+    highlights: [
+      "Involved in agile ceremonies including sprint planning, standups, and retrospectives",
+      "Converting a legacy portal system to a microservices architecture using .NET, Next.js, AWS, and DevOps practices",
+      "Built an ETL pipeline extracting usage, packet, and latency data from various APIs, transforming and loading into Grafana and other monitoring tools",
+      "Implemented AI automation workflows, chatbot, and API to recommend suitable plans to customers based on their usage patterns",
+    ],
+  },
+  {
     title: "Senior Web Developer",
     company: "Prosource Business Solutions Inc.",
-    period: "Dec 2021 – Present",
+    period: "Dec 2021 – Sep 2022",
     description: "Full-stack developer embedded in product teams, owning features from scoping through deployment on enterprise business software.",
     highlights: [
       "Participate in feature scoping, estimation, and scrum ceremonies",

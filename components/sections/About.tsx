@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const pillars = [
   "Software Engineering",
@@ -25,27 +24,9 @@ export default function About() {
           About
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-10 items-start">
+        <div className="grid grid-cols-1 gap-10 items-start">
 
-          {/* Left — photo */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-secondary shrink-0"
-          >
-            <Image
-              src="/profile.jpeg"
-              alt="John Mark O. Reyes"
-              fill
-              className="object-cover object-top"
-              sizes="240px"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/70 to-transparent" />
-          </motion.div>
-
-          {/* Right — bio + pillars */}
+          {/* Bio + pillars */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +56,7 @@ export default function About() {
               <div className="flex flex-col gap-2">
                 {pillars.map((p, i) => (
                   <div key={p} className="flex items-center gap-3 text-sm text-muted-foreground hover:text-white transition-colors">
-                    <span className="text-muted-foreground/30 font-mono text-xs w-5 shrink-0">
+                    <span className="text-muted-foreground/60 font-mono text-xs w-5 shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {p}
