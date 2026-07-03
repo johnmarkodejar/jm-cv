@@ -56,6 +56,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "ChatGPT", level: "Expert" },
       { name: "Claude", level: "Expert" },
       { name: "Gemini", level: "Advanced" },
+      { name: "MCP", level: "Advanced" },
       { name: "n8n", level: "Expert" },
       { name: "Botpress", level: "Advanced" },
       { name: "Zapier", level: "Advanced" },
@@ -293,5 +294,12 @@ export const projects: Project[] = [
     category: "Enterprise Application",
     technologies: ["Next.js", "WordPress (Headless)", "TypeScript", "AWS", "Redis"],
     impact: "Consolidated 15 codebases into one platform, cutting maintenance cost by 60%",
+  },
+  {
+    title: "HOAS — HOA Management Platform",
+    description: "Full-featured platform for Philippine homeowners associations covering billing, double-entry accounting, financial reporting, gate access, amenity booking, elections, and a self-service homeowner portal — built for RA 9904 and Data Privacy Act compliance.",
+    category: "Enterprise Application",
+    technologies: [".NET", "Next.js", "PostgreSQL", "Redis", "Docker", "Clean Architecture"],
+    impact: "Replaces spreadsheets and manual processes with an auditable, role-based system across 9 core modules",
   },
 ];

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const aiTools = ["ChatGPT", "Claude", "Gemini", "n8n", "Botpress", "Zapier"];
+const aiTools = ["ChatGPT", "Claude", "Gemini", "MCP", "n8n", "Botpress", "Zapier"];
 
 const workflow = [
   { label: "Lead Capture", desc: "Form, ad, or landing page" },
