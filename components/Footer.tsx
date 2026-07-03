@@ -15,9 +15,9 @@ export default function Footer() {
           <a href={`mailto:${personal.email}`} className="text-xs text-muted-foreground hover:text-white transition-colors">
             Email
           </a>
-          <a href="/api/resume" download className="text-xs text-muted-foreground hover:text-white transition-colors">
-            Resume
-          </a>
+          <span className="text-xs text-primary font-medium">
+            CV by request
+          </span>
         </div>
       </div>
     </footer>

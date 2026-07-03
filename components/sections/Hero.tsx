@@ -62,13 +62,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-wrap items-center gap-3 mb-12"
         >
-<a
-            href="/api/resume"
-            download
-            className="px-5 py-2 border border-border text-sm text-muted-foreground hover:text-white hover:border-white/20 rounded-lg transition-all"
-          >
-            Download resume
-          </a>
+          <span className="px-5 py-2 border border-primary/30 text-sm text-primary font-medium rounded-lg">
+            CV by request
+          </span>
           <span className="text-sm text-muted-foreground">
             You can reach me via{" "}
             <a

@@ -46,3 +46,7 @@ infrastructure/.terraform.lock.hcl
 infrastructure/terraform.tfstate
 infrastructure/terraform.tfstate.backup
 infrastructure/*.tfvars
+
+# claude code (local/session-specific, not shared)
+.claude/settings.local.json
+.claude/scheduled_tasks.lock

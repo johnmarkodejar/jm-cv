@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
 
@@ -31,9 +31,9 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
-        <a href="/">
+        <Link href="/">
           <Logo size={30} showWordmark variant="code" />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
@@ -46,13 +46,9 @@ export default function Navigation() {
               {link.label}
             </a>
           ))}
-          <a
-            href="/api/resume"
-            download
-            className="text-xs px-3 py-1.5 rounded-md border border-border hover:border-primary/50 hover:text-white text-muted-foreground transition-all"
-          >
-            Resume
-          </a>
+          <span className="text-xs px-3 py-1.5 rounded-md border border-primary/30 text-primary font-medium">
+            CV by request
+          </span>
         </nav>
 
         <button
@@ -76,9 +72,9 @@ export default function Navigation() {
                 {link.label}
               </a>
             ))}
-            <a href="/api/resume" download className="text-sm text-primary mt-1">
-              Download Resume
-            </a>
+            <span className="text-sm text-primary font-medium mt-1">
+              CV by request
+            </span>
           </div>
         </div>
       )}
