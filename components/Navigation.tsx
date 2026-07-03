@@ -6,11 +6,11 @@ import { Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Services", href: "#services" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Services", href: "/#services" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Projects", href: "/#projects" },
   { label: "Portfolio", href: "/portfolio" },
 ];
 
@@ -31,7 +31,7 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
-        <a href="#">
+        <a href="/">
           <Logo size={30} showWordmark variant="code" />
         </a>
 

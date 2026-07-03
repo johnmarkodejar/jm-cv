@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Dialog } from "@base-ui/react/dialog";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -11,20 +11,8 @@ export default function ProjectGallery({ images }: { images: GalleryImage[] }) {
   const open = activeIndex !== null;
 
   const goTo = (delta: number) => {
-    if (activeIndex === null) return;
-    setActiveIndex((activeIndex + delta + images.length) % images.length);
+    setActiveIndex((current) => current === null ? null : (current + delta + images.length) % images.length);
   };
-
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") goTo(-1);
-      if (e.key === "ArrowRight") goTo(1);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, activeIndex]);
 
   return (
     <Dialog.Root open={open} onOpenChange={(next) => !next && setActiveIndex(null)}>
@@ -53,7 +41,13 @@ export default function ProjectGallery({ images }: { images: GalleryImage[] }) {
 
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 transition-opacity duration-200" />
-        <Dialog.Popup className="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 sm:p-10 outline-none">
+        <Dialog.Popup
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 sm:p-10 outline-none"
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") goTo(-1);
+            if (e.key === "ArrowRight") goTo(1);
+          }}
+        >
           {activeIndex !== null && (
             <>
               <Dialog.Close className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
