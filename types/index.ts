@@ -16,6 +16,12 @@ export interface Service {
   technologies: string[];
 }
 
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface Project {
   title: string;
   description: string;
@@ -24,6 +30,7 @@ export interface Project {
   impact: string;
   githubUrl?: string;
   liveUrl?: string;
+  gallery?: GalleryImage[];
 }
 
 export interface Experience {
