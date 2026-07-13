@@ -1,7 +1,9 @@
 services:
   cv:
+    image: ghcr.io/johnmarkodejar/jm-cv:latest
     build: .
     ports:
       - "3100:3000"
     environment:
       - NODE_ENV=production
+    restart: unless-stopped

@@ -6,20 +6,42 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-push:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
 
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/johnmarkodejar/jm-cv:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          command_timeout: 30m
+          command_timeout: 10m
           script: |
             set -e
 
@@ -33,14 +55,8 @@ jobs:
             cd $APP_DIR
             git pull origin main
 
-            # Install dependencies and build
-            npm ci
-            npm run build
-
-            # Start or restart with PM2
-            if pm2 list | grep -q "jm-cv"; then
-              pm2 restart jm-cv
-            else
-              pm2 start npm --name "jm-cv" -- start
-              pm2 save
-            fi
+            # Image is built and pushed to GHCR by the build-and-push job,
+            # off this box entirely — the box only ever pulls the finished
+            # image, same pattern as the other services already on it.
+            docker compose pull
+            docker compose up -d
