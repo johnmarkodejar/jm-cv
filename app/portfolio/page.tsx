@@ -3,6 +3,7 @@ import { TrendingUp, ShoppingCart, GitBranch, Bot, BarChart2, Users, Building2, 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CaseStudy from "@/components/portfolio/CaseStudy";
+import CurrentlyWorking from "@/components/portfolio/CurrentlyWorking";
 import { projects } from "@/data/portfolio";
 
 export const metadata: Metadata = {
@@ -50,6 +51,8 @@ export default function PortfolioPage() {
             </p>
           </div>
         </section>
+
+        <CurrentlyWorking />
 
         {/* Featured case studies */}
         <section className="pb-20 px-6 border-b border-border">

@@ -254,6 +254,21 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    title: "TindaOne — Multi-Branch POS SaaS",
+    description: "Offline-first, multi-tenant point-of-sale platform for growing Philippine businesses — a single dashboard for products, stock, and staff across branches, with an Electron/PWA cashier app that keeps ringing up sales through internet outages and syncs automatically once back online.",
+    category: "Enterprise Application",
+    technologies: [".NET", "Next.js", "PostgreSQL", "Redis", "SQLite", "Electron", "Docker", "Clean Architecture"],
+    impact: "In active development — offline tenant activation, product variants, customer management, dashboard analytics, and a full audit trail shipped across ~30 commits in the last month",
+    liveUrl: "https://tindaone.com",
+    gallery: [
+      { src: "/portfolio/tindaone/dashboard.png", alt: "TindaOne dashboard with today's sales, hourly chart, top products and low stock alerts", caption: "Live dashboard" },
+      { src: "/portfolio/tindaone/pos.png", alt: "Browser-based POS checkout screen with product grid and cart", caption: "Point of sale" },
+      { src: "/portfolio/tindaone/products.png", alt: "Product catalog management with stock and pricing", caption: "Product catalog" },
+      { src: "/portfolio/tindaone/customers.png", alt: "Customer management with purchase history and lifetime spend", caption: "Customers" },
+      { src: "/portfolio/tindaone/sales.png", alt: "Sales and revenue reporting screen", caption: "Sales & reports" },
+    ],
+  },
+  {
     title: "Enterprise eCommerce Platform",
     description: "Multi-vendor eCommerce platform handling 10,000+ daily transactions with real-time inventory management, multi-currency support, and automated fulfillment workflows.",
     category: "eCommerce",

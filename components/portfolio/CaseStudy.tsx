@@ -1,4 +1,4 @@
-import { TrendingUp, type LucideIcon } from "lucide-react";
+import { TrendingUp, ArrowUpRight, type LucideIcon } from "lucide-react";
 import type { Project } from "@/types";
 import ProjectGallery from "./ProjectGallery";
 
@@ -12,9 +12,9 @@ export default function CaseStudy({
   iconColor: string;
 }) {
   return (
-    <div className="rounded-xl border border-border bg-card overflow-hidden">
+    <div className="rounded-xl border border-border bg-card">
       {project.gallery && project.gallery.length > 0 && (
-        <div className="bg-secondary/40 p-4 sm:p-6">
+        <div className="rounded-t-xl bg-secondary/40 p-6 sm:p-10">
           <ProjectGallery images={project.gallery} />
         </div>
       )}
@@ -23,6 +23,17 @@ export default function CaseStudy({
           {Icon && <Icon className={`w-4 h-4 shrink-0 ${iconColor}`} />}
           <h2 className="text-base font-semibold text-white">{project.title}</h2>
           <span className={`text-xs font-mono ${iconColor}`}>{project.category}</span>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-primary hover:underline underline-offset-2 ml-auto"
+            >
+              Visit site
+              <ArrowUpRight className="w-3 h-3" />
+            </a>
+          )}
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed mb-5">
           {project.description}

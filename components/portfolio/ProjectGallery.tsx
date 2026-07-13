@@ -3,8 +3,17 @@
 import { useState } from "react";
 import { Dialog } from "@base-ui/react/dialog";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Images, X } from "lucide-react";
 import type { GalleryImage } from "@/types";
+
+// Layer order is back-to-front; each entry positions + rotates one shot
+// of the collage. Kept to 3 slots — more than that reads as clutter at
+// this container size, so extra shots are only reachable via the lightbox.
+const LAYER_STYLES = [
+  "absolute left-0 top-0 w-[57%] sm:w-[52%] -rotate-6 z-10",
+  "absolute right-0 top-[6%] w-[57%] sm:w-[52%] rotate-3 z-20",
+  "absolute left-1/2 bottom-0 w-[64%] sm:w-[58%] -translate-x-1/2 rotate-0 z-30",
+];
 
 export default function ProjectGallery({ images }: { images: GalleryImage[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -14,30 +23,37 @@ export default function ProjectGallery({ images }: { images: GalleryImage[] }) {
     setActiveIndex((current) => current === null ? null : (current + delta + images.length) % images.length);
   };
 
+  // Spread the collage across the set (first / middle / last) rather than
+  // always the first three, so it represents more of the product.
+  const collage = images.length <= 3
+    ? images
+    : [images[0], images[Math.floor((images.length - 1) / 2)], images[images.length - 1]];
+
   return (
     <Dialog.Root open={open} onOpenChange={(next) => !next && setActiveIndex(null)}>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        {images.map((shot, i) => (
-          <figure key={shot.src} className="group">
-            <button
-              type="button"
-              onClick={() => setActiveIndex(i)}
-              className="block w-full rounded-lg border border-border overflow-hidden bg-background cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <Image
-                src={shot.src}
-                alt={shot.alt}
-                width={1440}
-                height={900}
-                className="w-full h-auto group-hover:scale-[1.03] transition-transform duration-300"
-              />
-            </button>
-            <figcaption className="text-[11px] text-muted-foreground mt-1.5 text-center">
-              {shot.caption}
-            </figcaption>
-          </figure>
+      <button
+        type="button"
+        onClick={() => setActiveIndex(0)}
+        className="group relative block w-full aspect-[16/12] sm:aspect-[16/9] my-4 sm:my-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg cursor-zoom-in"
+      >
+        {collage.map((shot, i) => (
+          <span key={shot.src} className={LAYER_STYLES[i % LAYER_STYLES.length]}>
+            <Image
+              src={shot.src}
+              alt={shot.alt}
+              width={1440}
+              height={900}
+              className="w-full h-auto rounded-lg border border-border shadow-2xl shadow-black/50 bg-background transition-transform duration-300 group-hover:-translate-y-1.5"
+            />
+          </span>
         ))}
-      </div>
+        {images.length > 1 && (
+          <span className="absolute bottom-2 right-2 z-40 flex items-center gap-1.5 text-[11px] font-medium text-white bg-black/60 backdrop-blur px-2.5 py-1 rounded-full border border-white/10 group-hover:bg-black/75 transition-colors">
+            <Images className="w-3 h-3" />
+            View all {images.length} screenshots
+          </span>
+        )}
+      </button>
 
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 transition-opacity duration-200" />
